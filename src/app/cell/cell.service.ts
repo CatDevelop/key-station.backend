@@ -24,16 +24,16 @@ export class CellService {
         return `This action returns a #${id} cell`;
     }
 
-    async canTeacherOut(teacherId: string) {
+    async canTeacherOut(teacherRfid: string) {
         const existTeacher = await this.prismaService.teacher.findFirst({
-            where: { id: teacherId },
+            where: { id: teacherRfid },
         });
 
         if (!existTeacher) throw new BadRequestException("Преподаватель не найден!");
 
         const cells = await this.prismaService.cell.findMany({
             where: {
-                teacherId: teacherId,
+                teacherId: existTeacher.id,
             },
         });
 

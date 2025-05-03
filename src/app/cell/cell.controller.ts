@@ -31,9 +31,9 @@ export class CellController {
         return this.cellService.findOne(+id);
     }
 
-    @Get("/canTeacherOut/:teacherId")
-    canTeacherOut(@Param("teacherId") teacherId: string) {
-        return this.cellService.canTeacherOut(teacherId);
+    @Get("/canTeacherOut/:teacherRfid")
+    canTeacherOut(@Param("teacherRfid") teacherRfid: string) {
+        return this.cellService.canTeacherOut(teacherRfid);
     }
 
     @Delete(":id")
