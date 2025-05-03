@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  sp_server:
+    container_name: backend-swagger
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    env_file: ".env"
+    ports:
+      - "9001:9001"
+    networks:
+      - sp_network
+        
+networks:
+  sp_network:
+    driver: bridge
