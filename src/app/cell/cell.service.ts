@@ -26,7 +26,7 @@ export class CellService {
 
     async canTeacherOut(teacherRfid: string) {
         const existTeacher = await this.prismaService.teacher.findFirst({
-            where: { id: teacherRfid },
+            where: { rfid: teacherRfid },
         });
 
         if (!existTeacher) throw new BadRequestException("Преподаватель не найден!");
