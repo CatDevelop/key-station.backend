@@ -57,7 +57,6 @@ export class CellController {
     }
 
     @ApiOperation({ summary: "Может ли пользователь выйти?" })
-    @Authorization()
     @HttpCode(HttpStatus.OK)
     @Get("/canCustomerOut/:customerRfid")
     canCustomerOut(@Param("customerRfid") teacherRfid: string) {

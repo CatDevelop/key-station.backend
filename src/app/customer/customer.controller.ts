@@ -36,7 +36,6 @@ export class CustomerController {
 
     @ApiOperation({ summary: "Получение клиента по пропуску" })
     @ApiBaseResponse(FindByRfidCustomerResponseDto, "Клиент")
-    @Authorization()
     @HttpCode(HttpStatus.OK)
     @Get("/:rfid")
     findByRfid(@Param() dto: FindByRfidDto) {
