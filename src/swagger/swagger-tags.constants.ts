@@ -12,7 +12,11 @@ export const _SWAGGER_TAGS = [
         description: "Работа с ячейками сейфа",
     },
     {
-        name: "teacher",
-        description: "Работа с преподавателями",
+        name: "customer",
+        description: "Работа с клиентам системы",
+    },
+    {
+        name: "key",
+        description: "Работа с ключами",
     },
 ];

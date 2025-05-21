@@ -19,7 +19,7 @@ async function bootstrap() {
     app.useGlobalPipes(new ValidationPipe());
     app.setGlobalPrefix(globalPrefix);
     app.enableCors({
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
         origin: ["http://localhost:5001", "https://swagger-provider.com", /\.pincode-infra\.ru$/],
         credentials: true,
         allowedHeaders: ["Content-Type", "Authorization"],

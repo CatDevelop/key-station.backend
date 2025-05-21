@@ -1,11 +1,18 @@
 import { IsNotEmpty, IsString } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class TakeKeyDto {
+export class BlockCellDto {
     @ApiProperty()
     @IsString()
-    @IsNotEmpty({ message: "ID преподавателя обязателен для заполнения" })
-    teacherId: number;
+    @IsNotEmpty({ message: "ID ячейки обязателен для заполнения" })
+    cellId: string;
+}
+
+export class UnblockCellDto {
+    @ApiProperty()
+    @IsString()
+    @IsNotEmpty({ message: "ID ячейки обязателен для заполнения" })
+    cellId: string;
 }
 
 export class CreatedCell {

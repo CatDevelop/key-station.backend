@@ -71,21 +71,24 @@ model Cell {
   floor     Int
   classroom Int?
 
+  isLocked Boolean @default(false)
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  teacher   Teacher? @relation(fields: [teacherId], references: [id])
-  teacherId String?
-  KeyLog    KeyLog[]
+  customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId String?
+  KeyLog     KeyLog[]
 
   @@map("cells")
 }
 
-model Teacher {
+model Customer {
   id String @id @default(uuid())
 
   name String
   rfid String
+  role CustomerRole
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -93,7 +96,7 @@ model Teacher {
   cells  Cell[]
   KeyLog KeyLog[]
 
-  @@map("teacher")
+  @@map("customer")
 }
 
 model KeyLog {
@@ -102,8 +105,8 @@ model KeyLog {
   action    KeyAction
   timestamp DateTime  @default(now())
 
-  teacher   Teacher @relation(fields: [teacherId], references: [id])
-  teacherId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
 
   cell   Cell   @relation(fields: [cellId], references: [id])
   cellId String
@@ -114,11 +117,19 @@ model KeyLog {
 enum KeyAction {
   TAKEN
   RETURNED
+  BLOCK
+  UNBLOCK
 }
 
 enum UserRole {
   REGULAR
   ADMIN
+}
+
+enum CustomerRole {
+  ADMIN
+  TEACHER
+  STUDENT
 }
 
 enum AuthMethod {
